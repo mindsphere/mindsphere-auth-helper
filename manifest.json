@@ -20,6 +20,6 @@
       "128": "assets/images/logo-128.png"
     }
   },
-  "content_security_policy": "script-src 'self' https://static.eu1.mindsphere.io; object-src 'self'",
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "manifest_version": 2
 }
