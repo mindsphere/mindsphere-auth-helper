@@ -1,6 +1,6 @@
 {
   "name": "MindSphere Authentication Helper Extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Borrow the SESSION and XSTF-TOKEN cookie from MindSphere for local development and command line tools.",
   "author": "@sn0wcat",
   "permissions": ["cookies", "https://*.mindsphere.io/*", "https://*.mindsphere-in.cn/*"],
