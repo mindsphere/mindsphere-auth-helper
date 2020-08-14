@@ -19,3 +19,5 @@ Use the extension to copy the cookies to the clipboard, paste them to the comman
 You can also use the exentsion to simplify the start of [MindSphere Development Proxy](https://opensource.mindsphere.io/docs/mindconnect-nodejs/cli/development-proxy.html) in a similar fashion. Just copy/paste the cookies to the command line and [start the development proxy](https://opensource.mindsphere.io/docs/mindconnect-nodejs/cli/development-proxy.html#tab1anchor1).
 
 ![cli](images/proxy-cookie.png)
+
+**Important: Treat the authentication cookies like your credentials and use them only in secure environments.**
