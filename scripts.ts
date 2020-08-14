@@ -44,11 +44,49 @@ class CookieCache {
 const cache = new CookieCache();
 document["cache"] = cache;
 
+function bindLogout() {
+  const logoutDiv = document.querySelector("#logoutDiv");
+  logoutDiv.innerHTML = "";
+  const template = document.querySelector("#deleteButton").innerHTML;
+  const domains = cache.GetDomains();
+
+  const mindsphereInstances = domains.map((x) => {
+    return x.split(/\.(.*)/)[1];
+  });
+
+  [...new Set(mindsphereInstances)].forEach((domain, index) => {
+    console.log(domain, index);
+    logoutDiv.innerHTML += mustache(template, {
+      index,
+      domain,
+    });
+  });
+
+  logoutDiv.querySelectorAll("button").forEach(
+    (x) =>
+      x.hasAttribute("delete") &&
+      (x.onclick = () => {
+        const domain = x.getAttribute("data");
+
+        chrome.cookies.getAll({ domain: domain }, (cookies) => {
+          cookies.forEach((cookie) => {
+            cache.RemoveCookie(cookie);
+            chrome.cookies.remove({ url: `https://${cookie.domain}`, name: cookie.name });
+          });
+          bindList();
+          bindLogout();
+        });
+      })
+  );
+}
+
 function bindList() {
   const list = document.querySelector("#cookieList");
+  list.innerHTML = "";
+
   const template = document.querySelector("#listItem").innerHTML;
 
-  cache.GetDomains().forEach((domain) => {
+  cache.GetDomains().forEach((domain, index) => {
     const cookies = cache.GetCookie(domain);
 
     const sessionCookie = cookies.filter((x) => x.name === "SESSION")[0];
@@ -77,6 +115,7 @@ function bindList() {
     const xsrftokenraw = btoa(`${xsrftoken}`);
 
     list.innerHTML += mustache(template, {
+      index,
       domain,
       session,
       xsrftoken,
@@ -98,12 +137,18 @@ function bindList() {
   });
 
   list.querySelectorAll("button").forEach(
-    async (x) =>
+    (x) =>
       (x.onclick = () => {
         x.hasAttribute("data") && navigator.clipboard.writeText(atob(x.getAttribute("data")));
+        x.hasAttribute("row") &&
+          x.hasAttribute("title") &&
+          (document.getElementById(`status_${x.getAttribute("row")}`).innerHTML = x
+            .getAttribute("title")
+            .replace("Copy", "Copied"));
       })
   );
 
+  showEmpty();
   return false;
 }
 
@@ -114,6 +159,11 @@ const mustache = (template, data = {}) =>
   );
 
 document.addEventListener("DOMContentLoaded", () => {
+  loadCookies();
+});
+
+function loadCookies() {
+  cache.Reset();
   chrome.cookies.getAll({}, (cookies) => {
     chrome.cookies.onChanged.addListener((info) => {
       cache.RemoveCookie(info.cookie);
@@ -127,8 +177,12 @@ document.addEventListener("DOMContentLoaded", () => {
         cache.AddCookie(x);
     });
     bindList();
-    cache.GetDomains().length !== 0
-      ? document.querySelector(".emptyState").setAttribute("style", "display:none")
-      : document.querySelector(".emptyState").setAttribute("style", "display:block");
+    bindLogout();
   });
-});
+}
+
+function showEmpty() {
+  cache.GetDomains().length !== 0
+    ? document.querySelector(".emptyState").setAttribute("style", "display:none")
+    : document.querySelector(".emptyState").setAttribute("style", "display:block");
+}

@@ -3,15 +3,24 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <link
-      href="https://static.eu1.mindsphere.io/mdsp-css/v1.3.0/css/mdsp-css.min.css"
-      rel="stylesheet"
-    />
+    <link href="vendor/mdsp/mdsp-css.min.css" rel="stylesheet" />
     <link href="vendor/osbar/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>MindSphere Authorization Helper</title>
+
+    <template id="deleteButton">
+      <button
+        data="{{domain}}"
+        class="button button--ghost has-color-forced-black"
+        title="Delete all {{domain}} cookies"
+        style="margin: 0px !important;"
+        delete
+      >
+        <i class="fa fa-trash-o has-color-contextRed500"> </i> Delete all <b>{{domain}}</b> cookies.
+      </button>
+    </template>
 
     <template id="listItem">
       <li class="list__item">
@@ -44,6 +53,7 @@
             <div class="item__description">
               <button
                 data="{{linux}}"
+                row="{{index}}"
                 class="button--primary"
                 title="Copy Environment Variables for Bash to Clipboard"
               >
@@ -51,6 +61,7 @@
               </button>
               <button
                 data="{{cmd}}"
+                row="{{index}}"
                 class="button--primary"
                 title="Copy Environment Variables for CMD to Clipboard"
               >
@@ -59,6 +70,7 @@
 
               <button
                 data="{{ps}}"
+                row="{{index}}"
                 class="button--primary"
                 title="Copy Environment Variables for PowerShell to Clipboard"
               >
@@ -66,6 +78,7 @@
               </button>
               <button
                 data="{{sessionraw}}"
+                row="{{index}}"
                 class="button--primary"
                 title="Copy SESSION Cookie to Clipboard"
               >
@@ -73,11 +86,14 @@
               </button>
               <button
                 data="{{xsrftokenraw}}"
+                row="{{index}}"
                 class="button--primary"
                 title="Copy XSRF-TOKEN Cookie to Clipboard"
               >
                 <i class="fa fa-clipboard has-color-contextGreen600"> </i> Xsrf
               </button>
+              <br />
+              <span id="status_{{index}}">&nbsp;</span>
             </div>
           </div>
         </div>
@@ -139,6 +155,7 @@
       <div class="list" style="text-align: left !important;">
         <ul class="list__list" id="cookieList"></ul>
       </div>
+      <div id="logoutDiv"></div>
       <div
         class="has-color-forced-gray400"
         style="margin-top: 5px; font-size: 14px; text-align: right;"
