@@ -1,6 +1,6 @@
 {
   "name": "mindsphere-auth-helper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MindSphere Authorization Helper (chrome extension)",
   "main": "index.html",
   "scripts": {
