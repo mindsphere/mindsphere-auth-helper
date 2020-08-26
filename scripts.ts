@@ -2,7 +2,7 @@ class CookieCache {
   private cookies: Record<string, Array<chrome.cookies.Cookie>> = {};
   public AddCookie(cookie: chrome.cookies.Cookie): void {
     const domain = cookie.domain;
-    console.log(domain);
+    // console.log(domain);
     if (!this.cookies[domain]) {
       this.cookies[domain] = [];
     }
@@ -55,7 +55,7 @@ function bindLogout() {
   });
 
   [...new Set(mindsphereInstances)].forEach((domain, index) => {
-    console.log(domain, index);
+    // console.log(domain, index);
     logoutDiv.innerHTML += mustache(template, {
       index,
       domain,
@@ -90,17 +90,15 @@ function bindList() {
     const cookies = cache.GetCookie(domain);
 
     const sessionCookie = cookies.filter((x) => x.name === "SESSION")[0];
-
     const session = sessionCookie?.value || "";
     const sessionShort = `${session.substr(0, 15)}...`;
-    let color = "accentBlueDark";
-    const now = new Date().getTime();
-
-    color = sessionCookie.expirationDate < now ? "accentBlueDark" : "accentRedDark";
-    color = sessionCookie.expirationDate + 5 * 60 * 60 < now ? "accentYellowDark" : color;
     const xsrftokenCookie = cookies.filter((x) => x.name === "XSRF-TOKEN")[0];
     const xsrftoken = xsrftokenCookie?.value || "";
     const xsrftokenShort = `${xsrftoken.substr(0, 15)}...`;
+
+    if (session === "" || xsrftoken === "") {
+      return;
+    }
     const cmd = btoa(
       `set "MDSP_HOST=${domain}" & set "MDSP_SESSION=${session}" & set "MDSP_XSRF_TOKEN=${xsrftoken}"`
     );
@@ -111,6 +109,7 @@ function bindList() {
       `$Env:MDSP_HOST="${domain}"; $Env:MDSP_SESSION="${session}"; $Env:MDSP_XSRF_TOKEN="${xsrftoken}"`
     );
 
+    const color = "accentBlueDark";
     const sessionraw = btoa(`${session}`);
     const xsrftokenraw = btoa(`${xsrftoken}`);
 
