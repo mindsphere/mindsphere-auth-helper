@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3 August 2020
+
+- small bugfixes
+
 ## 1.0.2 August 2020
 
 - released to chrome store
