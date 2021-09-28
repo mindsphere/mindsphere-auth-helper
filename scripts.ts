@@ -90,15 +90,12 @@ function bindList() {
     const cookies = cache.GetCookie(domain);
 
     const sessionCookie = cookies.filter((x) => x.name === "SESSION")[0];
-    const session = sessionCookie?.value || "";
+    const session = sessionCookie?.value || "[no session]";
     const sessionShort = `${session.substr(0, 15)}...`;
     const xsrftokenCookie = cookies.filter((x) => x.name === "XSRF-TOKEN")[0];
-    const xsrftoken = xsrftokenCookie?.value || "";
+    const xsrftoken = xsrftokenCookie?.value || "[no token]";
     const xsrftokenShort = `${xsrftoken.substr(0, 15)}...`;
 
-    if (session === "" || xsrftoken === "") {
-      return;
-    }
     const cmd = btoa(
       `set "MDSP_HOST=${domain}" & set "MDSP_SESSION=${session}" & set "MDSP_XSRF_TOKEN=${xsrftoken}"`
     );

@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    "target": "es2015",
+    "target": "ES2017",
     /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
-    "module": "es2015",
+    "module": "ES2015",
     /* Specify module code generation: 'commonjs', 'amd', 'system', 'umd' or 'es2015'. */
-    "lib": ["dom"],
+    "lib": ["DOM", "ES2017"],
     /* Specify library files to be included in the compilation:  */
     "allowJs": false,
     /* Allow javascript files to be compiled. */
