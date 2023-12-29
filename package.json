@@ -22,16 +22,9 @@
   "author": "@sn0wcat",
   "license": "MIT",
   "devDependencies": {
-    "@types/chrome": "0.0.117",
-    "@typescript-eslint/eslint-plugin": "^3.4.0",
-    "@typescript-eslint/parser": "^3.4.0",
-    "cross-env": "^7.0.2",
-    "cross-var": "^1.1.0",
-    "crossenv": "0.0.2-security",
-    "eslint": "^7.3.1",
-    "npm-pack-zip": "^1.2.7",
-    "prettier": "^2.0.5",
-    "rimraf": "^3.0.2",
-    "typescript": "^3.9.5"
+    "@types/chrome": "^0.0.254",
+    "cross-env": "^7.0.3",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
   }
 }
