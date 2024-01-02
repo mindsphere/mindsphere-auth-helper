@@ -9,10 +9,10 @@ body {
     margin-top: 25px;
     font-size: 21px;
     text-align: center;
-    animation: fadein 2s;
-    -moz-animation: fadein 2s; /* Firefox */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -o-animation: fadein 2s; /* Opera */
+    animation: fadein 1s;
+    -moz-animation: fadein 1s; /* Firefox */
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+    -o-animation: fadein 1s; /* Opera */
 }
 @keyframes fadein {
     from {
@@ -48,8 +48,4 @@ body {
     to {
         opacity: 1;
     }
-}
-
-a:hover {
-    color: #00cccc !important
 }

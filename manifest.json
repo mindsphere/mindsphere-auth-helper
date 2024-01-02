@@ -1,9 +1,15 @@
 {
-  "name": "MindSphere Authentication Helper Extension",
-  "version": "1.0.4",
-  "description": "Borrow the SESSION and XSTF-TOKEN cookie from MindSphere for local development and command line tools.",
+  "name": "Insights Hub and Industrial IoT Authentication Helper Extension",
+  "version": "2.0.0",
+  "description": "Borrow the SESSION and XSTF-TOKEN cookie from Siemens Insights Hub for local development and command line tools.",
   "author": "@sn0wcat",
-  "permissions": ["cookies", "https://*.mindsphere.io/*", "https://*.mindsphere-in.cn/*"],
+  "host_permissions": [
+    "https://*.mindsphere.io/*",
+    "https://*.mindsphere-in.cn/*"
+  ],
+  "permissions": [
+    "cookies"
+  ],
   "icons": {
     "16": "assets/images/logo-16.png",
     "32": "assets/images/logo-32.png",
@@ -11,15 +17,15 @@
     "128": "assets/images/logo-128.png"
   },
   "background": {},
-  "browser_action": {
-    "default_popup": "index.html",
+  "action": {
     "default_icon": {
       "16": "assets/images/logo-16.png",
       "32": "assets/images/logo-32.png",
       "48": "assets/images/logo-48.png",
       "128": "assets/images/logo-128.png"
-    }
+    },
+    "default_title": "Siemens Insights Hub and Industrial IoT Authentication Helper",
+    "default_popup": "index.html"
   },
-  "content_security_policy": "script-src 'self'; object-src 'self'",
-  "manifest_version": 2
+  "manifest_version": 3
 }
