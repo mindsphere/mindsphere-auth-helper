@@ -1,10 +1,9 @@
 {
   "name": "mindsphere-auth-helper",
-  "version": "1.0.4",
-  "description": "MindSphere Authorization Helper (chrome extension)",
+  "version": "2.0.0",
+  "description": "Siemens Insights Hub Authorization Helper (chrome extension). Siemens Insights Hub was previously known as MindSphere.",
   "main": "index.html",
   "scripts": {
-    "start=dev": "",
     "prepare": "rimraf dist && tsc --outdir dist/ && cross-env cp -r assets/ dist/ &&  cp -r vendor/ dist/ && cp manifest.json dist/ && cp index.html dist/",
     "pre-publish": "cross-var \"npm run prepare &&  rimraf *.zip  &&  7z a -tzip $npm_package_name-$npm_package_version.zip -w dist/.\"",
     "ts:watch": "tsc -w"
@@ -13,6 +12,9 @@
     "./dist"
   ],
   "keywords": [
+    "Siemens",
+    "Insights Hub",
+    "Siemens Xcelerator",
     "MindSphere",
     "Authorization",
     "Helper",

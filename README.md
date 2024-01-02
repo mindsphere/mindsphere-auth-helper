@@ -1,4 +1,4 @@
-# MindSphere Authorization Helper Chrome Extension
+# Insights Hub and Industrial IoT Authorization Helper Chrome Extension
 
 ![logo](images/authentication-helper2.png)
 
