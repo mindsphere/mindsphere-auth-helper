@@ -1,207 +1,154 @@
 <!-- @format -->
 
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <link href="vendor/mdsp/mdsp-css.min.css" rel="stylesheet" />
-    <link href="vendor/osbar/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>MindSphere Authorization Helper</title>
 
-    <template id="deleteButton">
-      <button
-        data="{{domain}}"
-        class="button button--ghost has-color-forced-black"
-        title="Delete all {{domain}} cookies"
-        style="margin: 0px !important;"
-        delete
-      >
-        <i class="fa fa-trash-o has-color-contextRed500"> </i> Delete all <b>{{domain}}</b> cookies.
-      </button>
-    </template>
+<head>
+  <meta charset="UTF-8" />
+  <link href="vendor/mdsp/mdsp-css.min.css" rel="stylesheet" />
+  <link href="vendor/osbar/styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Siemens Gateway Authorization Helper</title>
 
-    <template id="listItem">
-      <li class="list__item">
-        <div class="item__content">
-          <div
-            class="content__column content__column--primary has-default-width-20 xs-100 sm-66 md-33 lg-20 xl-20"
-          >
-            <p title="HOST" class="item__title">
-              {{domain}}
-              <a href="https://{{domain}}" title="Reload Application" target="_new">
-                <i class="fa fa-external-link has-color-accentBlueDark"></i>
-              </a>
-            </p>
-            <p
-              data="{{session}}"
-              title="SESSION (Click to Show)"
-              class="item__title has-color-contextBlue600"
-              style="cursor: pointer;"
-            >
-              {{sessionShort}}
-            </p>
-            <p
-              data="{{xsrftoken}}"
-              title="XSRF-TOKEN (Click to Show)"
-              class="item__title has-color-forced-contextGreen600"
-              style="cursor: pointer;"
-            >
-              {{xsrftokenShort}}
-            </p>
-            <div class="item__description">
-              <button
-                data="{{linux}}"
-                row="{{index}}"
-                class="button--primary"
-                title="Copy Environment Variables for Bash to Clipboard"
-              >
-                <i class="fa fa-clipboard has-color-forced-accentBlueDark"></i> Bash
-              </button>
-              <button
-                data="{{cmd}}"
-                row="{{index}}"
-                class="button--primary"
-                title="Copy Environment Variables for CMD to Clipboard"
-              >
-                <i class="fa fa-clipboard has-color-accentRedDark"></i> CMD
-              </button>
+  <template id="deleteButton">
+    <button data="{{domain}}" class="button button--ghost has-color-forced-black" title="Delete all {{domain}} cookies"
+      style="margin: 0px !important;" delete>
+      <i class="fa fa-trash-o has-color-contextRed500"> </i> Delete all <b>{{domain}}</b> cookies.
+    </button>
+  </template>
 
-              <button
-                data="{{ps}}"
-                row="{{index}}"
-                class="button--primary"
-                title="Copy Environment Variables for PowerShell to Clipboard"
-              >
-                <i class="fa fa-clipboard has-color-accentYellowDark"></i> PS
-              </button>
-              <button
-                data="{{sessionraw}}"
-                row="{{index}}"
-                class="button--primary"
-                title="Copy SESSION Cookie to Clipboard"
-              >
-                <i class="fa fa-clipboard has-color-contextBlue600"> </i> Session
-              </button>
-              <button
-                data="{{xsrftokenraw}}"
-                row="{{index}}"
-                class="button--primary"
-                title="Copy XSRF-TOKEN Cookie to Clipboard"
-              >
-                <i class="fa fa-clipboard has-color-contextGreen600"> </i> Xsrf
-              </button>
-              <br />
-              <span id="status_{{index}}">&nbsp;</span>
-            </div>
+  <template id="listItem">
+    <li class="list__item">
+      <div class="item__content">
+        <div class="content__column content__column--primary has-default-width-20 xs-100 sm-66 md-33 lg-20 xl-20">
+          <p title="HOST" class="item__title">
+            {{domain}}
+            <a href="https://{{domain}}" title="Reload Application" target="_new">
+              <i class="fa fa-external-link has-color-accentBlueDark"></i>
+            </a>
+          </p>
+          <p data="{{session}}" title="SESSION (Click to Show)" class="item__title has-color-contextBlue600"
+            style="cursor: pointer;">
+            {{sessionShort}}
+          </p>
+          <p data="{{xsrftoken}}" title="XSRF-TOKEN (Click to Show)"
+            class="item__title has-color-forced-contextGreen600" style="cursor: pointer;">
+            {{xsrftokenShort}}
+          </p>
+          <div class="item__description">
+            <button data="{{linux}}" row="{{index}}" class="button--primary"
+              title="Copy Environment Variables for Bash to Clipboard">
+              <i class="fa fa-clipboard has-color-forced-accentBlueDark"></i> Bash
+            </button>
+            <button data="{{cmd}}" row="{{index}}" class="button--primary"
+              title="Copy Environment Variables for CMD to Clipboard">
+              <i class="fa fa-clipboard has-color-accentRedDark"></i> CMD
+            </button>
+
+            <button data="{{ps}}" row="{{index}}" class="button--primary"
+              title="Copy Environment Variables for PowerShell to Clipboard">
+              <i class="fa fa-clipboard has-color-accentYellowDark"></i> PS
+            </button>
+            <button data="{{sessionraw}}" row="{{index}}" class="button--primary"
+              title="Copy SESSION Cookie to Clipboard">
+              <i class="fa fa-clipboard has-color-contextBlue600"> </i> Session
+            </button>
+            <button data="{{xsrftokenraw}}" row="{{index}}" class="button--primary"
+              title="Copy XSRF-TOKEN Cookie to Clipboard">
+              <i class="fa fa-clipboard has-color-contextGreen600"> </i> Xsrf
+            </button>
+            <br />
+            <span id="status_{{index}}">&nbsp;</span>
           </div>
         </div>
-      </li>
-    </template>
-  </head>
-
-  <body>
-    <osbar-root id="_mdspbar" ng-version="6.0.6">
-      <mdsp-home-link
-        ><a href="#">
-          <img
-            src="assets/images/authentication-helper.png"
-            style="height: 24px; margin: 6px;"
-          /> </a
-      ></mdsp-home-link>
-      <div
-        data-mdsp-e2e="osbar_dropdownWrapper"
-        class="_mdsp-dropdownWrapper _mdsp-tenantInfo text"
-      >
-        <a data-mdsp-e2e="osbar_dropdownLinkEnabled"
-          ><span class="dropdown-link-enabled">MindSphere Cookies&nbsp;</span></a
-        >
       </div>
+    </li>
+  </template>
+</head>
 
-      <div id="_mdsp-filler"></div>
-      <mdsp-operator-type>
-        <div id="_mdsp-operatorType">
-          <div class="_mdsp-operatorType__innerWrap">
-            auth
-          </div>
+<body>
+  <osbar-root id="_mdspbar" ng-version="6.0.6">
+    <mdsp-home-link><a href="#">
+        <img src="assets/images/authentication-helper.png" style="height: 24px; margin: 6px;" /> </a></mdsp-home-link>
+    <div data-mdsp-e2e="osbar_dropdownWrapper" class="_mdsp-dropdownWrapper _mdsp-tenantInfo text">
+      <a data-mdsp-e2e="osbar_dropdownLinkEnabled"><span class="dropdown-link-enabled"
+          style="padding-left: 20px; padding-right: 20px">Insights Hub Cookies</span></a>
+    </div>
+
+    <div id="_mdsp-filler"></div>
+    <mdsp-operator-type>
+      <div id="_mdsp-operatorType">
+        <div class="_mdsp-operatorType__innerWrap">
+          auth
         </div>
-      </mdsp-operator-type>
-    </osbar-root>
+      </div>
+    </mdsp-operator-type>
+  </osbar-root>
 
-    <div
-      class="mdsp mdsp-defaults"
-      id="_mdspcontent"
-      style="
+  <div class="mdsp mdsp-defaults" id="_mdspcontent" style="
         min-width: 500px;
         min-height: 500px;
         margin-left: 10px;
         margin-right: 10px;
         text-align: left;
-      "
-    >
-      <div class="emptyState">
-        <div class="emptyState__visual">
-          <i class="fa fa-certificate fa-2x"></i>
-        </div>
+      ">
 
-        <h2 class="emptyState__title">
-          You don't have any MindSphere Cookies
-        </h2>
-        <div class="emptyState__description">
-          Please login to your tenant to start borrowing cookies for the development tools.
+    <div class="container">
+      <div class="container__title">
+        <div class="title__content">
+          Insights Hub Cookies
         </div>
       </div>
-      <div class="list" style="text-align: left !important;">
-        <ul class="list__list" id="cookieList"></ul>
-      </div>
-      <div id="logoutDiv"></div>
-      <div
-        class="has-color-forced-gray400"
-        style="margin-top: 5px; font-size: 14px; text-align: right;"
-      >
-        <p>
-          treat the authentication cookies like your credentials<br />and use them only in secure
-          environments
-        </p>
-        <a
-          class="has-color-forced-gray250"
-          style="text-decoration: none;"
-          title="License"
-          href="https://opensource.mindsphere.io/docs/mindsphere-auth-helper/LICENSE.html"
-          target="_new"
-        >
-          MindSphere Development License <i class="fa fa-legal"></i
-        ></a>
-        <br />
-        <a
-          class="has-color-forced-gray250"
-          style="text-decoration: none;"
-          title="Source Code"
-          href="https://github.com/mindsphere/mindsphere-auth-helper/"
-          target="_new"
-          >github <i class="fa fa-github"></i
-        ></a>
-        <a
-          class="has-color-forced-gray250"
-          style="text-decoration: none;"
-          title="Documentation"
-          href="https://opensource.mindsphere.io/docs/mindsphere-auth-helper/index.html"
-          target="_new"
-          >opensource.mindsphere.io <i class="fa fa-external-link"></i
-        ></a>
-        <br />
-        <a
-          class="has-color-forced-gray250"
-          style="text-decoration: none;"
-          title="chrome web store"
-          href="https://chrome.google.com/webstore/detail/mindsphere-authentication/licndiiilobojikmhmmcgdbpmnmdeoee"
-          target="_new"
-          >v.1.0.4 <i class="fa fa-chrome"></i
-        ></a>
+      <div class="container__content">
+        <p>This extension can be used with Siemens products like Insights Hub (previously known as MindSphere) which use
+          Session Cookie and XSRF-TOKEN for authentication. </p>
       </div>
     </div>
+    <div class="emptyState">
+      <div class="emptyState__visual">
+        <i class="fa fa-certificate fa-2x"></i>
+      </div>
 
-    <script type="module" src="./scripts.js" type="text/javascript"></script>
-  </body>
+      <h2 class="emptyState__title">
+        You don't have any Insights Hub Cookies
+      </h2>
+      <div class="emptyState__description">
+        Please login to your tenant to start borrowing cookies for the development tools.
+      </div>
+    </div>
+    <div class="list" style="text-align: left !important;">
+      <ul class="list__list" id="cookieList"></ul>
+    </div>
+    <div id="logoutDiv"></div>
+    <div class="has-color-forced-gray400" style="margin-top: 5px; font-size: 14px; text-align: right;">
+      <p>
+        Treat the authentication cookies like your credentials<br />and use them only in secure
+        environments.
+      </p>
+      <a class="has-color-gray250 siemensblue" title="License"
+        href="https://github.com/mindsphere/mindsphere-auth-helper/blob/master/LICENSE.md" target="_new">
+        Development License <i class="fa fa-legal"></i></a>
+      <br />
+      <a class="has-color-gray250 siemensblue" title="Source Code"
+        href="https://github.com/mindsphere/mindsphere-auth-helper/" target="_new">Source Code on GitHub <i
+          class="fa fa-github"></i></a>
+      <br />
+      <a class="has-color-gray250 siemensblue" title="Documentation"
+        href="https://developer.siemens.com/industrial-iot-open-source/mindsphere-auth-helper/index.html"
+        target="_new">Documentation on Siemens Xcelerator Developer Portal <i class="fa fa-external-link"></i></a>
+      <br />
+      <a class="has-color-gray250 siemensblue" title="chrome web store"
+        href="https://chrome.google.com/webstore/detail/mindsphere-authentication/licndiiilobojikmhmmcgdbpmnmdeoee"
+        target="_new">Chrome Store Extension v.2.0.0 <i class="fa fa-chrome"></i></a>
+      <br />
+      <a class="has-color-gray250 siemensblue" title="Siemens Xcelerator" href="https://xcelerator.siemens.com"
+        target="_new">Made with <i class="fa fa-heart heartred"></i> at Siemens
+        Xcelerator</a>
+    </div>
+  </div>
+
+  <script type="module" src="./scripts.js" type="text/javascript"></script>
+</body>
+
 </html>

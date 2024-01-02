@@ -1,13 +1,18 @@
 /** @format */
 
+body {
+    min-width: 650px !important;
+    min-height: 600px !important;
+}
+
 #_mdspcontent {
     margin-top: 25px;
     font-size: 21px;
     text-align: center;
-    animation: fadein 2s;
-    -moz-animation: fadein 2s; /* Firefox */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -o-animation: fadein 2s; /* Opera */
+    animation: fadein 1s;
+    -moz-animation: fadein 1s; /* Firefox */
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+    -o-animation: fadein 1s; /* Opera */
 }
 @keyframes fadein {
     from {
@@ -43,4 +48,15 @@
     to {
         opacity: 1;
     }
+}
+
+a.siemensblue {
+    text-decoration: none;
+}
+a.siemensblue:hover {
+    color: #0c2847 !important;
+}
+
+i.heartred:hover {
+    color: #af235f !important;
 }
