@@ -49,3 +49,14 @@ body {
         opacity: 1;
     }
 }
+
+a.siemensblue {
+    text-decoration: none;
+}
+a.siemensblue:hover {
+    color: #0c2847 !important;
+}
+
+i.heartred:hover {
+    color: #af235f !important;
+}
