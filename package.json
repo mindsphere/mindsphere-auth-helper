@@ -4,8 +4,8 @@
   "description": "Siemens Insights Hub Authorization Helper (chrome extension). Siemens Insights Hub was previously known as MindSphere.",
   "main": "index.html",
   "scripts": {
-    "prepare": "rimraf dist && tsc --outdir dist/ && cross-env cp -r assets/ dist/ &&  cp -r vendor/ dist/ && cp manifest.json dist/ && cp index.html dist/",
-    "pre-publish": "cross-var \"npm run prepare &&  rimraf *.zip  &&  7z a -tzip $npm_package_name-$npm_package_version.zip -w dist/.\"",
+    "prepare": "rimraf dist/ && tsc --outdir dist/ && copyfiles -u 1 \"assets/**/*\" dist/assets/ &&  copyfiles -u 1 \"vendor/**/*\" dist/vendor/ && copyfiles manifest.json dist/ && copyfiles index.html dist/",
+    "pre-publish": "cross-var \"npm run prepare &&  rimraf *.zip  &&  7zz a -tzip $npm_package_name-$npm_package_version.zip -w dist/.\"",
     "ts:watch": "tsc -w"
   },
   "files": [
@@ -25,7 +25,9 @@
   "license": "MIT",
   "devDependencies": {
     "@types/chrome": "^0.0.254",
+    "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
+    "cross-var": "^1.1.0",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   }
