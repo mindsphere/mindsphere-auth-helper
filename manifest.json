@@ -1,5 +1,5 @@
 {
-  "name": "Insights Hub and Industrial IoT Authentication Helper Extension",
+  "name": "MindSphere Authentication Helper Extension",
   "version": "2.0.0",
   "description": "Borrow the SESSION and XSTF-TOKEN cookie from Siemens Insights Hub for local development and command line tools.",
   "author": "@sn0wcat",
