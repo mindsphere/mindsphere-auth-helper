@@ -89,7 +89,8 @@ function bindList() {
   cache.GetDomains().forEach((domain, index) => {
     const cookies = cache.GetCookie(domain);
 
-    const sessionCookie = cookies.filter((x) => x.name === "SESSION")[0];
+    // legacy tenants use a SESSION cookie, Xcelerator (siemens.app) tenants use gw_session
+    const sessionCookie = cookies.filter((x) => x.name === "SESSION" || x.name === "gw_session")[0];
     const session = sessionCookie?.value || "[no session]";
     const sessionShort = `${session.substr(0, 15)}...`;
     const xsrftokenCookie = cookies.filter((x) => x.name === "XSRF-TOKEN")[0];
@@ -168,7 +169,7 @@ function loadCookies() {
 
     cookies.forEach((x) => {
       x.session &&
-        (x.name === "SESSION" || x.name === "XSRF-TOKEN") &&
+        (x.name === "SESSION" || x.name === "gw_session" || x.name === "XSRF-TOKEN") &&
         (!x.expirationDate || x.expirationDate < new Date().getTime()) &&
         cache.AddCookie(x);
     });

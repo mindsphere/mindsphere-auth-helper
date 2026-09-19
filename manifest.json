@@ -1,11 +1,12 @@
 {
-  "name": "MindSphere Authentication Helper Extension",
-  "version": "2.0.0",
+  "name": "Insights Hub Authentication Helper Extension",
+  "version": "4.0.0",
   "description": "Borrow the SESSION and XSTF-TOKEN cookie from Siemens Insights Hub for local development and command line tools.",
   "author": "@sn0wcat",
   "host_permissions": [
     "https://*.mindsphere.io/*",
-    "https://*.mindsphere-in.cn/*"
+    "https://*.mindsphere-in.cn/*",
+    "https://*.siemens.app/*"
   ],
   "permissions": [
     "cookies"
