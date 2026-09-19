@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.0.0 September 2026
+
+- added support for Siemens Xcelerator (`*.siemens.app`) tenants, including the new `gw_session` cookie
+- updated header bar color
+- bolded the "Insights Hub Cookies" title
+- removed remaining MindSphere branding in favor of Insights Hub
+
 ## 2.0.0 January 2024
 
 - renamed MindSphere to Insights Hub

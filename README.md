@@ -4,6 +4,9 @@
 
 This chrome extension can be used to simplify the development tasks for which you need to use the [SESSION and XSRF-TOKEN](https://developer.mindsphere.io/howto/howto-local-development.html#generate-user-credentials) to access Insights Hub and Indutrial IoT APIs. It provides an easy way to copy the Insights Hub and Indutrial IoT authentication cookies to the clipboard without having to go to chrome developer tools.
 
+> [!NOTE]
+> Version 4.0.0 adds support for Siemens Xcelerator (`*.siemens.app`) tenants, including the `gw_session` cookie, alongside the legacy `*.mindsphere.io` domains and the `SESSION` cookie.
+
 ## Installation
 
 Go to <a href="https://chrome.google.com/webstore/detail/mindsphere-authentication/licndiiilobojikmhmmcgdbpmnmdeoee"><i class="fab fa-chrome"></i> chrome web store</a> and click on **add to chrome**.
